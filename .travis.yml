@@ -8,3 +8,6 @@ before_install:
 
 script:
   - docker run darvidont/docker-nginx npm run test -- --coverage
+
+after_script:
+  - docker stop darvidont/docker-nginx
