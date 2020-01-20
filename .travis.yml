@@ -7,4 +7,4 @@ before_install:
   - docker build -t darvidont/docker-nginx -f Dockerfile.dev .
 
 script:
-  - docker run darvidont/docker-nginx CI=true npm run test
+  - docker run darvidont/docker-nginx -c "CI=true npm run test"
