@@ -4,13 +4,8 @@ import App from './App';
 
 test('renders learn react link', () => {
     const { getByText } = render(<App />);
-    const linkElement = getByText(/Deployed/i);
+    const linkElement = getByText(/Coming soon/i);
     expect(linkElement).toBeInTheDocument();
 });
 
-test('renders learn react link', () => {
-    const { getByText } = render(<App />);
-    const linkElement = getByText(/using github/i);
-    expect(linkElement).toBeInTheDocument();
-});
 
