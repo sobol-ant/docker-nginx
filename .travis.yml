@@ -12,13 +12,13 @@ before_deploy:
 - wget -qO- https://toolbelt.heroku.com/install.sh | sh
 - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
 - docker login --username $HEROKU_USERNAME --password $HEROKU_API_KEY  registry.heroku.com
-- docker build -t $DOCKER_USERNAME/$DOCKER_IMAGE_NAME_production .
-- docker tag $DOCKER_USERNAME/$DOCKER_IMAGE_NAME_production registry.heroku.com/$HEROKU_APP_NAME/web
+- docker build -t $DOCKER_USERNAME/dockernginx .
+- docker tag $DOCKER_USERNAME/dockernginx registry.heroku.com/$HEROKU_APP_NAME/web
 
 deploy:
   provider: script
   script:
-    docker push $DOCKER_USERNAME/$DOCKER_IMAGE_NAME_production;
+    docker push $DOCKER_USERNAME/dockernginx;
     docker push registry.heroku.com/$HEROKU_APP_NAME/web;
     heroku container:release web --app $HEROKU_APP_NAME
   on:
