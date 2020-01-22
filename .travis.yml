@@ -9,10 +9,17 @@ script:
 - docker run -e "CI=true" $DOCKER_USERNAME/$DOCKER_IMAGE_NAME npm run test
 
 before_deploy:
+<<<<<<< HEAD
 - wget -qO- https://toolbelt.heroku.com/install.sh | sh
 - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
 - echo $HEROKU_API_KEY | docker login --username $HEROKU_USERNAME --password-stdin  registry.heroku.com
 - docker tag $DOCKER_USERNAME/$DOCKER_IMAGE_NAME registry.heroku.com/$HEROKU_APP_NAME/web
+=======
+  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
+  - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+  - docker login --username $HEROKU_USERNAME --password $HEROKU_API_KEY registry.heroku.com
+  - docker tag $DOCKER_USERNAME/$DOCKER_IMAGE_NAME registry.heroku.com/$HEROKU_APP_NAME/web
+>>>>>>> 22356976ecbb091131f94a797d70f32532ed5a7b
 
 deploy:
   provider: script
